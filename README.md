@@ -47,12 +47,13 @@ https://wiki.wemos.cc/downloads
 * Download and install Atom Editor and the platformio IDE Package..
 	http://docs.platformio.org/en/latest/ide/atom.html#installation
 
-* when platformio is up an running, open the Project with **File -> Open Folder** (browse the unpacked repository then click select folder)
+* when platformio is up an running, open the Project with **File -> Open Folder** (browse the unpacked repository then click select folder)  
 ![open folder](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc\_pio\_openfolder.png)
 
-* Click **PlatformIO: Build**
+* Click **PlatformIO: Build**  
 ![pio build](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build.png)
- Now platformio will download the needed dependencies (you need to be connected to the Internet)			 ![pio build success](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build_success.png)
+ Now platformio will download the needed dependencies (you need to be connected to the Internet)  
+![pio build success](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build_success.png)
 
 * After PIO Build is finished you can now change the User settings in the **/src/config.h** file according {TBD} link to config description
 * Click **PlatformIO: Upload** to upload the sketch to the ESP
