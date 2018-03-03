@@ -51,7 +51,7 @@ https://wiki.wemos.cc/downloads
 ![open folder](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc\_pio\_openfolder.png)
 
 * Click **PlatformIO: Build**  
-![pio build](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build.png)
+![pio build](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build.png)  
  Now platformio will download the needed dependencies (you need to be connected to the Internet)  
 ![pio build success](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build_success.png)
 
