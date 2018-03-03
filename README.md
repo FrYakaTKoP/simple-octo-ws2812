@@ -71,7 +71,7 @@ https://wiki.wemos.cc/downloads
 	Therefore open File>Preferences
 	After "Additional Boards Manager URLs" insert: http://arduino.esp8266.com/stable/package_esp8266com_index.json
 	
-![001](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/001.png)
+![001](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/001.png)  
 	Then open Tools>Board>Boards Manager
 	Search for ESP
 	Install latest ESP8266 Board Manager
@@ -81,7 +81,7 @@ https://wiki.wemos.cc/downloads
 	Therefore open Sketch>Include Library>Manage Libraries...
 	Search for Adafruit Neopixel
 	Install latest Adafruit Neopixel library
-	![003](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/003.png)
+	![003](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/003.png)  
 	Search ArduinoJson
 	Install latest ArduinoJson	![004](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/004.png)
 * Restart Arduino IDE
