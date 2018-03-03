@@ -1,4 +1,5 @@
 
+
 # simple ESP8266 based Octoprint Printer State Lamp
 
 Simple Sketch to display the printer state connected to Octoprint on a Neopixel (WS2812b or similar)
@@ -18,11 +19,14 @@ BOM:
 * 1x WS2812b RGB Led
 * 1x Wires (3 cores, about 3-4cm)
 * 1x Micro USB Cable and 5V Power supply
+![schematic](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/electronics/sch/)
 
 
 ## Printed Parts
 
-{TBD}
+For best results using this Sketch in combination with the almighty **** found on thingiverse is recommended.
+
+{TBD} add thingiverse link here
 
 # Software Installation
 
@@ -44,44 +48,43 @@ https://wiki.wemos.cc/downloads
 	http://docs.platformio.org/en/latest/ide/atom.html#installation
 
 * when platformio is up an running, open the Project with **File -> Open Folder** (browse the unpacked repository then click select folder)
- {TBD} /doc/img/sc_pio_openfolder.png
+![open folder](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc\_pio\_openfolder.png)
+
 * Click **PlatformIO: Build**
-{TBD} /doc/img/sc_pio_build.png
- Now platformio will download the needed dependencies (you need to be connected to the Internet)
- {TBD} /doc/img/sc_pio_build_success.png
+![pio build](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build.png)
+ Now platformio will download the needed dependencies (you need to be connected to the Internet)			 ![pio build success](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_build_success.png)
 
 * After PIO Build is finished you can now change the User settings in the **/src/config.h** file according {TBD} link to config description
 * Click **PlatformIO: Upload** to upload the sketch to the ESP
   *you may need to try the upload a couple times, those modules can be hard to program via bootloader. You could also check the connection using the serial monitor*
-
-{TBD} /doc/img/sc_pio_upload.png
+	![pio upload](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_upload.png)
 * enjoy
-
 {TBD} add pic of the almighty **** in all its glory
 
 ## The Arduino IDE Way
 
 * Download/Clone this Repository and unpack it on your favourite folder
-* Download and install the latest version of the Arduino IDE  for your system  https://www.arduino.cc/en/Main/Software
+*  Download and install the latest version of the Arduino IDE  for your system  https://www.arduino.cc/en/Main/Software
 
 * Add ESP Board Manager to your IDE  :
 	Therefore open File>Preferences
 	After "Additional Boards Manager URLs" insert: http://arduino.esp8266.com/stable/package_esp8266com_index.json
-	{TBD} /doc/img/_001.png_
+	
+![001](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/001.png)
 	Then open Tools>Board>Boards Manager
 	Search for ESP
 	Install latest ESP8266 Board Manager
-	{TBD} /doc/img/_002.png_
+	![002](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/002.png)
+	
 * Add Additional Libraries
 	Therefore open Sketch>Include Library>Manage Libraries...
 	Search for Adafruit Neopixel
 	Install latest Adafruit Neopixel library
-	{TBD} /doc/img/_003.png_
+	![003](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/003.png)
 	Search ArduinoJson
-	Install latest ArduinoJson
-	{TBD} /doc/img/_004.png_
+	Install latest ArduinoJson	![004](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/004.png)
 * Restart Arduino IDE
-* Open scr.ini
+* Open config.h and add your configuration
 * Choose your board and com port
 * Upload
 
