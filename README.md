@@ -85,7 +85,7 @@ https://wiki.wemos.cc/downloads
 	Search ArduinoJson
 	Install latest ArduinoJson	![004](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/004.png)
 * Restart Arduino IDE
-* Open config.h and add your configuration to the config.h
+* Open config.h and add your configuration
 * Choose your board and com port
 * Upload
 
