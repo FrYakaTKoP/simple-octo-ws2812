@@ -70,13 +70,13 @@ https://wiki.wemos.cc/downloads
 * Add ESP Board Manager to your IDE  :
 	Therefore open File>Preferences
 	After "Additional Boards Manager URLs" insert: http://arduino.esp8266.com/stable/package_esp8266com_index.json
-	
+
 ![001](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/001.png)  
 	Then open Tools>Board>Boards Manager
 	Search for ESP
 	Install latest ESP8266 Board Manager
 	![002](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/002.png)
-	
+
 * Add Additional Libraries
 	Therefore open Sketch>Include Library>Manage Libraries...
 	Search for Adafruit Neopixel
@@ -85,7 +85,7 @@ https://wiki.wemos.cc/downloads
 	Search ArduinoJson
 	Install latest ArduinoJson	![004](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/004.png)
 * Restart Arduino IDE
-* Open config.h and add your configuration
+* Open config.h and add your configuration to the config.h
 * Choose your board and com port
 * Upload
 
