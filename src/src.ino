@@ -16,6 +16,13 @@
 uint8_t wiCount = 0;
 uint32_t previousMillis = 0;
 
+//Animation Variables
+//
+uint8_t k = 0, stage = 0, modus = 255;
+uint32_t last = 0;
+//
+//end Animaton Variables
+
 const char *prefix = "http://";
 const char *postfix ="/api/printer?exclude=temperature,sd";
 
@@ -102,16 +109,16 @@ void loop() {
 
                 if(root["state"]["flags"]["printing"])
                 {
-                  fadeInOut(strip.Color(255, 255, 0), 0, 230); // Yellow
+                  modus = 3; // Yellow
                 }
                 else if(root["state"]["flags"]["paused"])
                 {
-                  fadeInOut(strip.Color(0, 0, 255), 0, 230); // blue
+                  modus = 2; // blue
                   // TBD: should display rainbow now and on
                 }
                 else if(root["state"]["flags"]["error"])
                 {
-                  fadeInOut(strip.Color(255, 0, 0), 0, 230); // red
+                  modus = 0; // red
                 }
                 // finsihed flag does not exist :(
                 // else if(root["state"]["flags"]["finished"])
@@ -120,20 +127,19 @@ void loop() {
                 // }
                 else if(root["state"]["flags"]["ready"])
                 {
-                  strip.setBrightness(255);
-                  rainbowCycle(20);
+                  modus = 4;
                 }
               }
               else if(httpCode == HTTP_CODE_UNAUTHORIZED)
               {
                   // wrong api key
-                  fadeInOut(strip.Color(255, 0, 0), 0, 60); // Red
+                  modus = 0; // Red
                   // TBD: should stop after 2min
               }
               else if(httpCode == HTTP_CODE_CONFLICT)
               {
-                  // Printer is not operational
-                  fadeInOut(strip.Color(0, 255, 0), 0, 60); // Green
+                // Printer is not operational
+                modus = 2; // Green
               }
             }
             else
@@ -163,56 +169,254 @@ void loop() {
       }
 
     } // interval
+
+ switch (modus) {
+   case 0: {
+     fade_red(&last, &k, &stage, lenght);
+     break;
+   }
+   case 1: {
+     fade_green(&last, &k, &stage, lenght);
+      break;
+    }
+
+   case 2: {
+      fade_blue(&last, &k, &stage, lenght);
+      break;
+    }
+  case 3: {
+   fade_yellow(&last, &k, &stage, lenght);
+    break;
+   }
+  case 4: {
+      rainbow(&last, &k, &stage, lenght);
+      break;
+    }
+  case 5: {
+      police(&last, &stage, lenght);
+      break;
+    }
+  case 6: {
+      flash(&last, &stage, lenght);
+      break;
+    }
+
+  default: {
+
+      break;
+    }
+  }//switch
+
 } // loop
 
-void fadeInOut(uint32_t color, int bottom, int top)
-{
-  int j, j2;
-  strip.setBrightness(bottom);
-  strip.setPixelColor(0, color);
-  strip.show();
 
-  for (j = bottom; j < top; j++) {
-    strip.setBrightness(j);
-    strip.setPixelColor(0, color);
-    strip.show();
-    delay(10);
-  }
-  delay(20);
-  for (j2 = top; j2 > bottom; j2--) {
-    strip.setBrightness(j2);
-    strip.setPixelColor(0, color);
-    strip.show();
-    delay(10);
-  }
-}
 
-// Slightly different, this makes the rainbow equally distributed throughout
-void rainbowCycle(uint8_t wait) {
-  uint16_t i, j;
+//Animationfunctions
+//
+void rainbow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
 
-  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
-    for(i=0; i< strip.numPixels(); i++) {
-      strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 200) {
+    *lastmillis = millis();
+    switch (*stage) {
+      case 0: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 255 - *k, 0, *k);
+          }
+          break;
+        }
+
+      case 1: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, *k, 255 - *k);
+          }
+          break;
+        }
+
+      case 2: {
+          for (int i = 0; i < lenght; i++) {
+            LED.setPixelColor(i, *k, 255 - *k, 0);
+          }
+          break;
+        }
     }
-    strip.show();
-    delay(wait);
+    LED.show();
+    if (*k == 254) {
+      *stage = (*stage + 1) % 3;
+    }
+    *k = (*k + 1) % 255;
   }
 }
 
-// Input a value 0 to 255 to get a color value.
-// The colours are a transition r - g - b - back to r.
-uint32_t Wheel(byte WheelPos) {
-  WheelPos = 255 - WheelPos;
-  if(WheelPos < 85) {
-    return strip.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+void fade_red(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 20) {
+    *lastmillis = millis();
+    switch (*stage) {
+      case 0: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 63 + *k, 0);
+          }
+          break;
+        }
+
+      case 1: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 255 - *k, 0);
+          }
+          break;
+        }
+
+    }
+    LED.show();
+    if (*k == 191) {
+      *stage = (*stage + 1) % 2;
+    }
+    *k = (*k + 1) % 192;
   }
-  if(WheelPos < 170) {
-    WheelPos -= 85;
-    return strip.Color(0, WheelPos * 3, 255 - WheelPos * 3);
-  }
-  WheelPos -= 170;
-  return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
 
-//Agent Cain Test
+void fade_green(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 20) {
+    *lastmillis = millis();
+    switch (*stage) {
+      case 0: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 63 + *k, 0);
+          }
+          break;
+        }
+
+      case 1: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 255 - *k, 0);
+          }
+          break;
+        }
+
+    }
+    LED.show();
+    if (*k == 191) {
+      *stage = (*stage + 1) % 2;
+    }
+    *k = (*k + 1) % 192;
+  }
+}
+
+void fade_blue(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 20) {
+    *lastmillis = millis();
+    switch (*stage) {
+      case 0: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 0, 63 + *k);
+          }
+          break;
+        }
+
+      case 1: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 0, 0, 255 - *k);
+          }
+          break;
+        }
+
+    }
+    LED.show();
+    if (*k == 191) {
+      *stage = (*stage + 1) % 2;
+    }
+    *k = (*k + 1) % 192;
+  }
+}
+
+void fade_yellow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 20) {
+    *lastmillis = millis();
+    switch (*stage) {
+      case 0: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 63 + *k, 63 + *k, 0);
+          }
+          break;
+        }
+
+      case 1: {
+          for (int i = 0; i < lenght; i++)  {
+            LED.setPixelColor(i, 255 - *k, 255 - *k, 0);
+          }
+          break;
+        }
+
+    }
+    LED.show();
+    if (*k == 191) {
+      *stage = (*stage + 1) % 2;
+    }
+    *k = (*k + 1) % 192;
+  }
+}
+
+void police(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 400 ) {
+    *lastmillis = millis();
+    if (*stage == 0) {
+      for (int i = 0; i < lenght; i++) {
+        LED.setPixelColor(i, 255, 0, 0);
+      }
+      LED.show();
+      *stage = 1;
+    }
+    else {
+      if (*stage == 1) {
+        for (int i = 0; i < lenght; i++) {
+          LED.setPixelColor(i, 0, 0, 255);
+        }
+        LED.show();
+        *stage = 0;
+      }
+    }
+  }
+}
+
+void flash(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
+
+  unsigned long  currentmillis = millis();
+
+  if ((currentmillis - *lastmillis) >= 40 ) {
+    *lastmillis = millis();
+    if (*stage == 0) {
+      for (int i = 0; i < lenght; i++) {
+        LED.setPixelColor(i, 255, 255, 255);
+      }
+      LED.show();
+      *stage = 1;
+    }
+    else {
+      if (*stage == 1) {
+        for (int i = 0; i < lenght; i++) {
+          LED.setPixelColor(i, 0, 0, 0);
+        }
+        LED.show();
+        *stage = 0;
+      }
+    }
+  }
+}
+//
+//End Animationfunctions
