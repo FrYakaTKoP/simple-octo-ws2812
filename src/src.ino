@@ -44,7 +44,7 @@ void setup() {
     USE_SERIAL.begin(115200);
    // USE_SERIAL.setDebugOutput(true);
 
-    USE_SERIAL.println()
+    USE_SERIAL.println();
     USE_SERIAL.println();
     USE_SERIAL.println("try connecting to Wifi");
 
