@@ -119,6 +119,7 @@ const char* WPWD = "wifipassword";
 const char* APIKEY = "FA9131811AF94AB48C6A9ED45AEF60FC";
 String OCTOIP = "192.168.1.3";
 uint16_t pollInterval = 500;
+const uint8_t lenght = 1;
 ```
 
 ## Using:
