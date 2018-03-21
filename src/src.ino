@@ -18,7 +18,7 @@ uint32_t previousMillis = 0;
 
 //Animation Variables
 //
-uint8_t k = 0, stage = 0, modus = 255;
+uint8_t k = 0, stage = 0, modus = 6;
 uint32_t last = 0;
 //
 //end Animaton Variables
@@ -31,15 +31,12 @@ const char *URL = url.c_str();
 
 ESP8266WiFiMulti WiFiMulti;
 
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(1, LEDPIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel LED = Adafruit_NeoPixel(length, LEDPIN, NEO_GRB + NEO_KHZ800);
 
 void setup() {
 
-  strip.begin();
-
-  strip.setBrightness(60);
-  strip.setPixelColor(0, strip.Color(255, 0, 0));
-  strip.show(); // Initialize all pixels to 'off'
+  LED.begin();
+  LED.show(); // Initialize all pixels to 'off'
 
     USE_SERIAL.begin(115200);
    // USE_SERIAL.setDebugOutput(true);
@@ -123,7 +120,7 @@ void loop() {
                 // finsihed flag does not exist :(
                 // else if(root["state"]["flags"]["finished"])
                 // {
-                //   fadeInOut(strip.Color(0, 255, 0), 0, 230); // Green
+
                 // }
                 else if(root["state"]["flags"]["ready"])
                 {
