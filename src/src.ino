@@ -169,32 +169,32 @@ void loop() {
 
  switch (modus) {
    case 0: {
-     fade_red(&last, &k, &stage, lenght);
+     fade_red(&last, &k, &stage, length);
      break;
    }
    case 1: {
-     fade_green(&last, &k, &stage, lenght);
+     fade_green(&last, &k, &stage, length);
       break;
     }
 
    case 2: {
-      fade_blue(&last, &k, &stage, lenght);
+      fade_blue(&last, &k, &stage, length);
       break;
     }
   case 3: {
-   fade_yellow(&last, &k, &stage, lenght);
+   fade_yellow(&last, &k, &stage, length);
     break;
    }
   case 4: {
-      rainbow(&last, &k, &stage, lenght);
+      rainbow(&last, &k, &stage, length);
       break;
     }
   case 5: {
-      police(&last, &stage, lenght);
+      police(&last, &stage, length);
       break;
     }
   case 6: {
-      flash(&last, &stage, lenght);
+      flash(&last, &stage, length);
       break;
     }
 
@@ -210,7 +210,7 @@ void loop() {
 
 //Animationfunctions
 //
-void rainbow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+void rainbow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
@@ -218,21 +218,21 @@ void rainbow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
     *lastmillis = millis();
     switch (*stage) {
       case 0: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 255 - *k, 0, *k);
           }
           break;
         }
 
       case 1: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, *k, 255 - *k);
           }
           break;
         }
 
       case 2: {
-          for (int i = 0; i < lenght; i++) {
+          for (int i = 0; i < length; i++) {
             LED.setPixelColor(i, *k, 255 - *k, 0);
           }
           break;
@@ -246,7 +246,7 @@ void rainbow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
   }
 }
 
-void fade_red(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+void fade_red(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
@@ -254,14 +254,14 @@ void fade_red(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) 
     *lastmillis = millis();
     switch (*stage) {
       case 0: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 63 + *k, 0);
           }
           break;
         }
 
       case 1: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 255 - *k, 0);
           }
           break;
@@ -276,7 +276,7 @@ void fade_red(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) 
   }
 }
 
-void fade_green(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+void fade_green(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
@@ -284,14 +284,14 @@ void fade_green(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght
     *lastmillis = millis();
     switch (*stage) {
       case 0: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 63 + *k, 0);
           }
           break;
         }
 
       case 1: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 255 - *k, 0);
           }
           break;
@@ -306,7 +306,7 @@ void fade_green(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght
   }
 }
 
-void fade_blue(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+void fade_blue(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
@@ -314,14 +314,14 @@ void fade_blue(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght)
     *lastmillis = millis();
     switch (*stage) {
       case 0: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 0, 63 + *k);
           }
           break;
         }
 
       case 1: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 0, 0, 255 - *k);
           }
           break;
@@ -336,7 +336,7 @@ void fade_blue(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght)
   }
 }
 
-void fade_yellow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lenght) {
+void fade_yellow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
@@ -344,14 +344,14 @@ void fade_yellow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lengh
     *lastmillis = millis();
     switch (*stage) {
       case 0: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 63 + *k, 63 + *k, 0);
           }
           break;
         }
 
       case 1: {
-          for (int i = 0; i < lenght; i++)  {
+          for (int i = 0; i < length; i++)  {
             LED.setPixelColor(i, 255 - *k, 255 - *k, 0);
           }
           break;
@@ -366,14 +366,14 @@ void fade_yellow(uint32_t* lastmillis, uint8_t* k, uint8_t* stage, uint8_t lengh
   }
 }
 
-void police(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
+void police(uint32_t* lastmillis, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
   if ((currentmillis - *lastmillis) >= 400 ) {
     *lastmillis = millis();
     if (*stage == 0) {
-      for (int i = 0; i < lenght; i++) {
+      for (int i = 0; i < length; i++) {
         LED.setPixelColor(i, 255, 0, 0);
       }
       LED.show();
@@ -381,7 +381,7 @@ void police(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
     }
     else {
       if (*stage == 1) {
-        for (int i = 0; i < lenght; i++) {
+        for (int i = 0; i < length; i++) {
           LED.setPixelColor(i, 0, 0, 255);
         }
         LED.show();
@@ -391,14 +391,14 @@ void police(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
   }
 }
 
-void flash(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
+void flash(uint32_t* lastmillis, uint8_t* stage, uint8_t length) {
 
   unsigned long  currentmillis = millis();
 
   if ((currentmillis - *lastmillis) >= 40 ) {
     *lastmillis = millis();
     if (*stage == 0) {
-      for (int i = 0; i < lenght; i++) {
+      for (int i = 0; i < length; i++) {
         LED.setPixelColor(i, 255, 255, 255);
       }
       LED.show();
@@ -406,7 +406,7 @@ void flash(uint32_t* lastmillis, uint8_t* stage, uint8_t lenght) {
     }
     else {
       if (*stage == 1) {
-        for (int i = 0; i < lenght; i++) {
+        for (int i = 0; i < length; i++) {
           LED.setPixelColor(i, 0, 0, 0);
         }
         LED.show();
