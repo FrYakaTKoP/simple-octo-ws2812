@@ -9,6 +9,19 @@ This is just a placeholder until a planned octoprint plugin is avialable. It pol
 Security Warning:
 This sketch sends unencrypted GET requests with the octoprint apikey in cleartext in the request header through your network. Although this isn't that big of a security risk though, if your octoprint is not visible to the internet (which i did not recommend anyway)
 
+## Description:
+The color of the lamp will show you the status as follows:
+
+-flash white: booting / connecting
+-fade rainbow: Printer is ready
+-fade yellow: Printer is printing
+-fade blue: Print is paused
+-fade red: error occurred
+-red/blue: HTTP Code Unauthorized
+-fade green: HTTP Code Conflict
+
+It will also output small informations on the serial line.
+
 # Hardware
 
 
