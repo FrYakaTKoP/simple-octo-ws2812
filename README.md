@@ -12,13 +12,13 @@ This sketch sends unencrypted GET requests with the octoprint apikey in cleartex
 ## Description:
 The color of the lamp will show you the status as follows:
 
--flash white: booting / connecting 
--fade rainbow: Printer is ready
--fade yellow: Printer is printing
--fade blue: Print is paused
--fade red: error occurred
--red/blue: HTTP Code Unauthorized
--fade green: HTTP Code Conflict
+-flash white: booting / connecting  
+-fade rainbow: Printer is ready  
+-fade yellow: Printer is printing  
+-fade blue: Print is paused  
+-fade red: error occurred  
+-red/blue: HTTP Code Unauthorized  
+-fade green: HTTP Code Conflict  
 
 It will also output small informations on the serial line.
 
