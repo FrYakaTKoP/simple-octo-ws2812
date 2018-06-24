@@ -130,7 +130,7 @@ void loop() {
               else if(httpCode == HTTP_CODE_UNAUTHORIZED)
               {
                   // wrong api key
-                  modus = 0; // Red
+                  modus = 5; // Red
                   // TBD: should stop after 2min
               }
               else if(httpCode == HTTP_CODE_CONFLICT)
