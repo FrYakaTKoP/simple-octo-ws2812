@@ -39,7 +39,7 @@ BOM:
 
 For best results using this Sketch in combination with the almighty **** found on thingiverse is recommended.
 
-{TBD} add thingiverse link here
+https://www.thingiverse.com/thing:2974862
 
 # Software Installation
 
