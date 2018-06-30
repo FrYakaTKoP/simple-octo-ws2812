@@ -32,12 +32,12 @@ BOM:
 * 1x WS2812b RGB Led
 * 1x Wires (3 cores, about 3-4cm)
 * 1x Micro USB Cable and 5V Power supply
-![schematic](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/electronics/sch/)
+![schematic](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/electronics/sch/illumination-cat-electronic-wiring.png)
 
 
 ## Printed Parts
 
-For best results using this Sketch in combination with the almighty **** found on thingiverse is recommended.
+For best results using this Sketch in combination with the almighty **Illumination Cat** found on thingiverse is recommended.
 
 https://www.thingiverse.com/thing:2974862
 
@@ -73,7 +73,7 @@ https://wiki.wemos.cc/downloads
   *you may need to try the upload a couple times, those modules can be hard to program via bootloader. You could also check the connection using the serial monitor*
 	![pio upload](https://raw.githubusercontent.com/FrYakaTKoP/simple-octo-ws2812/master/doc/img/sc_pio_upload.png)
 * enjoy
-{TBD} add pic of the almighty **** in all its glory
+{TBD} add pic of the almighty **Illumination Cat** in all its glory
 
 ## The Arduino IDE Way
 
@@ -135,6 +135,4 @@ uint16_t pollInterval = 500;
 const uint8_t lenght = 1;
 ```
 
-## Using:
 
-{TBD} More detail on the behavior
